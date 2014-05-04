@@ -37,7 +37,7 @@ post '/complete' do
 
 	# 	{complete: @task.complete}.to_json
 	# else
-	# 	redirect to "/bobville"
+	# 	redirect to "/notAJAXcomplete"
 	# end
 end
 
@@ -51,7 +51,7 @@ post '/incomplete' do
 
 	# 	{complete: @task.complete}.to_json
 	# else
-	# 	redirect to "/bobville"
+	# 	redirect to "/notAJAXincomplete"
 	# end
 end
 

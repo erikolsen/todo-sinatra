@@ -4,26 +4,19 @@ $(document).ready(function() {
   
   $("li").on("click", function(event){
   	event.preventDefault();
-  	// $(this).css("color", "grey");
+
   	$(this).toggleClass("finished");
   		if ($(this).hasClass("finished")){
-  			// $("body").css("background-color", "red")
+  			
   			var task_name = $(this).text();
-  			console.log("You clicked task named: " + task_name)
+  			// console.log("You clicked task named: " + task_name)
   			$.post("/complete", {name: task_name})
-  				// , function(returned_data){
-  				// var stuff = $.parseJSON(returned_data);
-  				// alert(returned_data);
-  			// });//if post
+  		
   		} else {
   			var task_name = $(this).text();
   			$.post("/incomplete", {name: task_name})
-  				// , function(returned_data){
-  				// alert(returned_data)
-  			// })//else post
-  			// $("body").css("background-color", "blue")
-  		}
-
+  		
+  		}//close of if/else
 
   });//on click li
 
