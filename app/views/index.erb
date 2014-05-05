@@ -4,11 +4,11 @@
     <% if @tasks %>
       <% @tasks.each do |task| %>
 
-        <li><%= task.name %></li>
+        <li class="<%= task.complete %>"><%= task.name %></li>
       <% end %>
     <% end %>
   </div>
-  
+
   <div id="create_task">
     <h3><a href="/new">Create Tasks</a></h3>
   </div>

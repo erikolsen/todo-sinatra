@@ -1,21 +1,21 @@
 $(document).ready(function() {
 //not able to click on last added list element without
 //refreshing the page
-  
-  $("li").on("click", function(event){
+
+  $("#tasks").on("click", "li", function(event){
   	event.preventDefault();
 
-  	$(this).toggleClass("finished");
-  		if ($(this).hasClass("finished")){
-  			
+  	$(this).toggleClass("true");
+  		if ($(this).hasClass("true")){
+
   			var task_name = $(this).text();
   			// console.log("You clicked task named: " + task_name)
   			$.post("/complete", {name: task_name})
-  		
+
   		} else {
   			var task_name = $(this).text();
   			$.post("/incomplete", {name: task_name})
-  		
+
   		}//close of if/else
 
   });//on click li
