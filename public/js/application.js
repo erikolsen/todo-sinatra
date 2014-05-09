@@ -1,6 +1,8 @@
 $(document).ready(function() {
 //not able to click on last added list element without
 //refreshing the page
+//event delegation used to detect evnt on somethign
+// that doesn't exist yet.  Called on parrent.
 
   $("#tasks_list").on("click", "li", function(event){
   	event.preventDefault();
@@ -8,7 +10,6 @@ $(document).ready(function() {
   	$(this).toggleClass("true");
   		var task_name = $(this).text();
       if ($(this).hasClass("true")){
-
   			// console.log("You clicked task named: " + task_name)
   			$.post("/complete", {name: task_name})
 
@@ -30,6 +31,10 @@ $(document).ready(function() {
   	});//get request
   });//on click #create_task
 
+
+// It is expensive to call this ont he document
+// look at using hide/show and keeping that form in the
+// index view.
   $(document).on("submit", "#form_submit", function(event){
   	event.preventDefault();
   	//finds the action tag in the form

@@ -1,5 +1,5 @@
 get '/' do
-	@tasks = Task.all
+	@tasks = Task.all.sort_by(&:id)
   erb :index
 end
 
@@ -28,7 +28,9 @@ post '/create' do
 end
 
 post '/complete' do
+
 	puts "This is the name to complete: #{params[:name]}"
+
 	name = params[:name]
 	@task = Task.where(name: name).first
 	@task.update_attributes(complete: "true")
