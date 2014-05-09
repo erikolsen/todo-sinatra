@@ -15,7 +15,7 @@ end
 post '/create' do
 	@task = Task.create!(name: params[:task])
 
-	if @task.valid? 
+	if @task.valid?
 		if request.xhr?
 
 			erb :_task_list, layout: false, locals: { task: @task }
@@ -27,8 +27,8 @@ post '/create' do
 	end
 end
 
-post '/complete' do 
-	puts "This is the name: #{params[:name]}"
+post '/complete' do
+	puts "This is the name to complete: #{params[:name]}"
 	name = params[:name]
 	@task = Task.where(name: name).first
 	@task.update_attributes(complete: "true")
@@ -41,8 +41,8 @@ post '/complete' do
 	# end
 end
 
-post '/incomplete' do 
-	puts "This is the name: #{params[:name]}"
+post '/incomplete' do
+	puts "This is the name to incomplete: #{params[:name]}"
 	name = params[:name]
 	@task = Task.where(name: name).first
 	@task.update_attributes(complete: "false")

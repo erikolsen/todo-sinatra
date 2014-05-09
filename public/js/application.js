@@ -1,21 +1,21 @@
 $(document).ready(function() {
 //not able to click on last added list element without
 //refreshing the page
-  
-  $("li").on("click", function(event){
+
+  $("#tasks_list").on("click", "li", function(event){
   	event.preventDefault();
 
-  	$(this).toggleClass("finished");
-  		if ($(this).hasClass("finished")){
-  			
-  			var task_name = $(this).text();
+  	$(this).toggleClass("true");
+  		var task_name = $(this).text();
+      if ($(this).hasClass("true")){
+
   			// console.log("You clicked task named: " + task_name)
   			$.post("/complete", {name: task_name})
-  		
+
   		} else {
   			var task_name = $(this).text();
   			$.post("/incomplete", {name: task_name})
-  		
+
   		}//close of if/else
 
   });//on click li
@@ -41,7 +41,7 @@ $(document).ready(function() {
   	//don't forget to include locals
   	$.post(url, data, function(add_task){
   		console.log("Made it to the post!");
-  		$('#tasks').append(add_task);
+  		$('#tasks_list').append(add_task);
   	}); //post
   	//removes the submit form from the DOM
   	$(this).remove();
@@ -49,4 +49,23 @@ $(document).ready(function() {
   	$("#create_task a").show();
   });//form submit
 
+  //when the delete button is clicked got through
+  //each elemenet in the list and add a checkbox
+  //add a delete button to the end of the form.
+  //afterwards remove the checkboxes
+
 });//doc ready
+
+
+
+
+
+
+
+
+
+
+
+
+
+

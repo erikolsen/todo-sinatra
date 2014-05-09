@@ -1,14 +1,14 @@
 <div class="container">
   <h2>Todo List</h2>
-  <div id="tasks">
+  <div id="tasks_list">
     <% if @tasks %>
       <% @tasks.each do |task| %>
 
-        <li><%= task.name %></li>
+        <li class="<%= task.complete %>"><%= task.name %></li>
       <% end %>
     <% end %>
   </div>
-  
+
   <div id="create_task">
     <h3><a href="/new">Create Tasks</a></h3>
   </div>
