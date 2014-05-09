@@ -1,17 +1,15 @@
 $(document).ready(function() {
 //not able to click on last added list element without
 //refreshing the page
-
 //event delegation used to detect evnt on somethign
 // that doesn't exist yet.  Called on parrent.
 
-  $("#tasks").on("click", "li", function(event){
+  $("#tasks_list").on("click", "li", function(event){
   	event.preventDefault();
 
   	$(this).toggleClass("true");
-  		if ($(this).hasClass("true")){
-
-  			var task_name = $(this).text();
+  		var task_name = $(this).text();
+      if ($(this).hasClass("true")){
   			// console.log("You clicked task named: " + task_name)
   			$.post("/complete", {name: task_name})
 
@@ -48,7 +46,7 @@ $(document).ready(function() {
   	//don't forget to include locals
   	$.post(url, data, function(add_task){
   		console.log("Made it to the post!");
-  		$('#tasks').append(add_task);
+  		$('#tasks_list').append(add_task);
   	}); //post
   	//removes the submit form from the DOM
   	$(this).remove();
@@ -56,4 +54,23 @@ $(document).ready(function() {
   	$("#create_task a").show();
   });//form submit
 
+  //when the delete button is clicked got through
+  //each elemenet in the list and add a checkbox
+  //add a delete button to the end of the form.
+  //afterwards remove the checkboxes
+
 });//doc ready
+
+
+
+
+
+
+
+
+
+
+
+
+
+
